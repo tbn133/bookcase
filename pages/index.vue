@@ -9,7 +9,7 @@
             class="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow">
             <NuxtLink :to="book._path">
               <div class="h-64 w-auto md:w-1/2">
-                <img :src="`/images/${book.image || book.isbn}.png`" alt="" class="inset-0 h-full w-full object-cover object-center" />
+                <img :src="`${$config.app.baseURL}/images/${book.image || book.isbn}.png`" alt="" class="inset-0 h-full w-full object-cover object-center" />
               </div>
             </NuxtLink>
             <div class="p-5">

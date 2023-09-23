@@ -7,22 +7,21 @@
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
-    "predeploy": "pnpm generate",
-    "deploy": "gh-pages -d dist"
+    "deploy": "nuxt generate && touch .output/public/.nojekyll && gh-pages --dotfiles -d .output/public"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^0.43.0",
+    "@antfu/eslint-config": "^1.0.0-beta.3",
     "@nuxt/content": "^2.8.2",
     "@nuxtjs/tailwindcss": "^6.8.0",
     "@tailwindcss/typography": "^0.5.10",
-    "@types/node": "^18",
-    "nuxt": "^3.6.0",
-    "typescript": "latest"
+    "@types/node": "latest",
+    "mdast-util-to-string": "^4.0.0",
+    "nuxt": "^3.7.3",
+    "typescript": "latest",
+    "unist-util-stringify-position": "^4.0.0"
   },
   "dependencies": {
-    "axios": "^1.5.0",
     "gh-pages": "^6.0.0",
-    "vue-pdf-embed": "^1.1.6",
-    "vue3-pdfjs": "^0.1.6"
+    "vue-pdf-embed": "^1.1.6"
   }
 }

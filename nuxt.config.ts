@@ -7,7 +7,7 @@ export default defineNuxtConfig({
   },
   modules: [
     '@nuxtjs/tailwindcss',
-    '@nuxt/content'
+    '@nuxt/content',
   ],
   experimental: {
     reactivityTransform: false,
@@ -15,14 +15,12 @@ export default defineNuxtConfig({
     payloadExtraction: false,
   },
   app: {
-    // baseURL: '/bookcase/',
-    // buildAssetsDir: 'assets'
+    baseURL: '/bookcase/',
+    // buildAssetsDir: 'assets',
   },
-  // generate: {
-  //   async routes() {
-  //     const { $content } = require('@nuxt/content')
-  //     const files = await $content({ deep: true }).only(['path']).fetch()
-  //     return files.map(file => file.path === '/index' ? '/' : file.path)
-  //   }
-  // }
+  runtimeConfig: {
+    public: {
+      basePdfUrl: 'https://raw.githubusercontent.com/tbn133/bookcase-pdf/master',
+    },
+  },
 })
