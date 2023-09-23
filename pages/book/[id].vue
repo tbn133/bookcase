@@ -10,10 +10,14 @@
 
 <script setup>
 const pdfurl = ref(null)
-const { path } = useRoute();
+const { path } = useRoute()
 const { data } = await useAsyncData(`content-${path}`, () => {
-  const _data = queryContent().where({ _path: path }).findOne();
+  const _data = queryContent().where({ _path: path }).findOne()
   return _data;
 });
-pdfurl.value = `/uploads/books/${data.value.name}.pdf`;
+if (data.value.url) {
+  pdfurl.value = `https://cors-anywhere.herokuapp.com/${data.value.url}`;
+} else {
+  pdfurl.value = `/uploads/books/${data.value.url || data.value.name}.pdf`
+}
 </script>

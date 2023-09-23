@@ -1,14 +1,26 @@
 <script setup lang="ts">
+import axios from "axios"
+
 const props = defineProps<{ url: string }>()
 
 const isLoading = ref(false)
 const page = ref(1)
-const pdfSource = ref('')
+const pdfSource = ref()
 const pdfRef = ref()
 const pageCount = computed(() => pdfRef.value?.pageCount || 1)
 const showAllPages = ref(false)
-watch(() => props.url, (newValue, _) => {
-  pdfSource.value = newValue
+watch(() => props.url, async (newValue, _) => {
+  const response = await axios({
+    url: newValue,
+    method: 'get',
+    withCredentials: false,
+    responseType: 'arraybuffer',
+    onDownloadProgress: function (progressEvent: any) {
+      // Do whatever you want with the native progress event
+      console.log(progressEvent.loaded / progressEvent.total * 100)
+    }
+  })
+  pdfSource.value = response.data
 }, { immediate: true })
 
 watch(() => showAllPages.value, (newValue, _) => {

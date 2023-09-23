@@ -2,14 +2,14 @@
   <main>
     <div class="p-10 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-4 gap-5">
       <ContentList path="/book" :query="{
-        only: ['name', 'description', 'tags', '_path', 'image'],
+        only: ['name', 'description', '_path', 'image', 'isbn', 'url'],
       }">
         <template v-slot="{ list }">
           <div v-for="book in list" :key="book._path"
             class="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow">
             <NuxtLink :to="book._path">
               <div class="h-64 w-auto md:w-1/2">
-                <img :src="`/images/${book.image}.png`" alt="" class="inset-0 h-full w-full object-cover object-center" />
+                <img :src="`/images/${book.image || book.isbn}.png`" alt="" class="inset-0 h-full w-full object-cover object-center" />
               </div>
             </NuxtLink>
             <div class="p-5">

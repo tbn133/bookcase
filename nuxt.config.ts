@@ -1,6 +1,6 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  ssr: false,
+  // ssr: false,
   telemetry: false,
   tailwindcss: {
     cssPath: '~/assets/css/main.css',
@@ -15,7 +15,14 @@ export default defineNuxtConfig({
     payloadExtraction: false,
   },
   app: {
-    baseURL: '/nuxt-github-pages/', // baseURL: '/<repository>/'
-    buildAssetsDir: 'assets',
-  }
+    // baseURL: '/bookcase/',
+    // buildAssetsDir: 'assets'
+  },
+  // generate: {
+  //   async routes() {
+  //     const { $content } = require('@nuxt/content')
+  //     const files = await $content({ deep: true }).only(['path']).fetch()
+  //     return files.map(file => file.path === '/index' ? '/' : file.path)
+  //   }
+  // }
 })
